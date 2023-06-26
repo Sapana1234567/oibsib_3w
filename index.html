@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Temperature Converter</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            body{
+                background-image:url("OIP.jpg") ;
+                background-repeat: no-repeat;
+                background-size: cover;
+                }
+                h1{
+                    text-align: center;
+                    font-size: 45px;
+                    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+                }
+                .container{
+                    font-size: 19px;
+                    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+                    margin-left: 30%;
+                    margin-right: 30%;
+                    padding: 3%;
+                    border-radius: 10%;
+                    background-color: bisque;
+                
+                }
+                input[name="temp"]{
+                    border-radius: 5px;
+                    font-size: 16px;
+                    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+                }
+                input[name="tempType"],input[name="tempType1"]{
+                   margin-left: 60px;; 
+                }
+                button{
+                    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+                    font-size: 20px;
+                    margin-left: 40%;
+                    border-radius: 5px;
+                    background-color: maroon;
+                    color: aliceblue;
+                    border-color: white;
+                    
+                }
+                
+        </style>
+    </head>
+
+    <body>
+        <h1>Welcome to Temperature Converter</h1>
+        <div class="container">
+            <form name="myForm" action="" method="GET">
+                <label for="temp">Temperature : </label>
+                <input type="text" id="temp" name="temp"><br><br>
+
+                <label for="typ">From:</label><br>
+                <input type="radio" id="cel" name="tempType" value="C">
+                <label for="cel">Celsius</label><br>
+                <input type="radio" id="fah" name="tempType" value="F">
+                <label for="fah">Fahrenheit</label><br>
+                <input type="radio" id="kel" name="tempType" value="K">
+                <label for="kel">Kelvin</label><br><br>
+
+                <label for="typ">To:</label><br>
+                <input type="radio" id="cel" name="tempType1" value="C">
+                <label for="cel">Celsius</label><br>
+                <input type="radio" id="fah" name="tempType1" value="F">
+                <label for="fah">Fahrenheit</label><br>
+                <input type="radio" id="kel" name="tempType1" value="K">
+                <label for="kel">Kelvin</label><br>
+
+                <button type="button" name="button1"  onclick="tempConvert(this.form)">Convert</button>
+               
+            </form><br><br>
+            Temperature after Conversion:<p id="output"></p>
+    </div>
+
+    <script>
+        
+        function tempConvert(form)
+        {
+            var t=form.temp.value; 
+            var i=form.tempType.value;
+            var j=form.tempType1.value;
+            var o=0;
+            //When Temperature is entered in Celsius
+            if(i=="C")
+            {
+                if(j=="C")
+                {
+                   document.getElementById("output").innerHTML=t+" \u00B0"+j;
+                }
+                else if(j=="F")
+                {
+                    o=(t*1.8)+32;
+                    document.getElementById("output").innerHTML=o+" \u00B0"+j; 
+                }
+                else if(j=="K")
+                {
+                    o=t+273.15;
+                    document.getElementById("output").innerHTML=o+" \u00B0"+j; 
+                }
+            }
+
+            //When Temperature is entered in Fahrenheit
+            else if(i=="F")
+            {
+                if(j=="C")
+                {
+                    o=(t-32)/1.8;
+                    document.getElementById("output").innerHTML=o+" \u00B0"+j; 
+                }
+                else if(j=="F")
+                {
+                    document.getElementById("output").innerHTML=o+" \u00B0"+j;
+                }
+                else if(j=="K")
+                {
+                    o=((t-32)/1.8)+273.15;
+                    document.getElementById("output").innerHTML=o+" \u00B0"+j; 
+                }
+            }
+
+            //When Temperature is entered in Kelvin
+            else if(i=="K")
+            {
+                if(j=="C")
+                {
+                    o=t-273.15;
+                    document.getElementById("output").innerHTML=o+" \u00B0"+j; 
+                }
+                else if(j=="F")
+                {
+                    o=((t-273.15)*1.8)+32;
+                    document.getElementById("output").innerHTML=o+" \u00B0"+j; 
+                }
+                else if(j=="K")
+                {
+                    document.getElementById("output").innerHTML=t+" \u00B0"+j;
+                }
+
+            }
+            
+        }
+    </script>
+
+    </body>
+</html>
